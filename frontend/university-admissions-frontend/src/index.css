@@ -1,0 +1,1329 @@
+/* =========================================================
+   MERIDIAN UNIVERSITY
+   PREMIUM BLACK + WHITE GLASSMORPHISM
+   ========================================================= */
+
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+:root {
+  --color-paper: #eef0f2;
+  --color-surface: rgba(255, 255, 255, 0.58);
+  --color-surface-strong: rgba(255, 255, 255, 0.72);
+
+  --color-ink: #111111;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --color-muted: #59616a;
+  --color-line: rgba(0, 0, 0, 0.12);
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius: 16px;
+  --max-width: 1240px;
+
+  --glass-blur: 24px;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+
+  color: var(--color-ink);
+
+  background:
+    radial-gradient(
+      circle at 8% 8%,
+      rgba(255, 255, 255, 1) 0,
+      rgba(255, 255, 255, 0.8) 14%,
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 94% 18%,
+      rgba(205, 209, 213, 0.95) 0,
+      rgba(220, 223, 226, 0.55) 20%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 8% 88%,
+      rgba(198, 202, 206, 0.9) 0,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(255, 255, 255, 0.95) 0,
+      transparent 36%
+    ),
+    linear-gradient(
+      135deg,
+      #f9f9f9 0%,
+      #e8eaec 48%,
+      #f6f6f6 100%
+    );
+
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND GLASS LIGHT
+   ========================================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  width: 420px;
+  height: 420px;
+
+  top: 100px;
+  right: -120px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(210, 213, 216, 0.30)
+    );
+
+  filter: blur(3px);
+
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.9),
+    0 30px 80px rgba(0, 0, 0, 0.08);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  width: 360px;
+  height: 360px;
+
+  bottom: -130px;
+  left: -100px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.75),
+      rgba(190, 194, 198, 0.28)
+    );
+
+  filter: blur(3px);
+
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.85),
+    0 30px 70px rgba(0, 0, 0, 0.08);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  margin: 0 0 0.4em;
+
+  color: #050505;
+}
+
+h1 {
+  font-size: 2.1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: #222222;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 3px;
+}
+
+.muted {
+  color: #60666d;
+}
+
+
+/* =========================================================
+   NAVIGATION — FLOATING DARK GLASS
+   ========================================================= */
+
+.nav {
+  width: calc(100% - 48px);
+  max-width: 1480px;
+
+  margin: 0 auto;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(5, 5, 5, 0.95),
+      rgba(35, 35, 35, 0.84),
+      rgba(5, 5, 5, 0.93)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.15);
+
+  border-top: 0;
+
+  border-radius:
+    0 0 22px 22px;
+
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+  position: relative;
+  z-index: 10;
+}
+
+
+/* =========================================================
+   NAV INNER
+   ========================================================= */
+
+.nav-inner {
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  padding: 0.95rem 1.5rem;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 2rem;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.nav-brand {
+  font-family: var(--font-display);
+
+  font-weight: 600;
+
+  font-size: 1.15rem;
+
+  color: #ffffff;
+
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1.05;
+
+  white-space: nowrap;
+}
+
+.nav-brand:hover {
+  text-decoration: none;
+}
+
+.nav-brand-sub {
+  font-family: var(--font-body);
+
+  font-weight: 400;
+
+  font-size: 0.72rem;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  letter-spacing: 0.02em;
+}
+
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
+.nav-links {
+  display: flex;
+
+  gap: 1.5rem;
+
+  flex: 1;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.92rem;
+
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   NAV AUTH
+   ========================================================= */
+
+.nav-auth {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+}
+
+.nav-user {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.88rem;
+}
+
+.nav-role {
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 0.75rem;
+
+  margin-left: 0.25rem;
+}
+
+
+/* =========================================================
+   BUTTON BASE
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.62rem 1.15rem;
+
+  border-radius: 10px;
+
+  border: 1px solid transparent;
+
+  font-size: 0.92rem;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON — GLOSSY BLACK
+   ========================================================= */
+
+.btn-primary {
+  background:
+    linear-gradient(
+      135deg,
+      #050505,
+      #242424
+    );
+
+  color: #ffffff;
+
+  border-color:
+    rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.btn-primary:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #000000,
+      #333333
+    );
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.20),
+    0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   WHITE GLASS BUTTON
+   ========================================================= */
+
+.btn-quiet {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.86),
+      rgba(255, 255, 255, 0.52)
+    );
+
+  color: #111111;
+
+  border-color:
+    rgba(0, 0, 0, 0.14);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 8px 22px rgba(0, 0, 0, 0.07);
+}
+
+.btn-quiet:hover {
+  background:
+    rgba(255, 255, 255, 0.92);
+
+  color: #000000;
+
+  border-color:
+    rgba(0, 0, 0, 0.28);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   NAV LOGOUT GLASS
+   ========================================================= */
+
+.nav .btn-quiet {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.04)
+    );
+
+  color: #ffffff;
+
+  border-color:
+    rgba(255, 255, 255, 0.28);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.nav .btn-quiet:hover {
+  background:
+    rgba(255, 255, 255, 0.17);
+
+  color: #ffffff;
+
+  border-color:
+    rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.page {
+  max-width: var(--max-width);
+
+  margin: 0 auto;
+
+  padding:
+    3.5rem 1.5rem 5rem;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 1.5rem;
+
+  margin-bottom: 2rem;
+
+  flex-wrap: wrap;
+}
+
+.page-lede {
+  max-width: 60ch;
+
+  color: #5b6269;
+}
+
+
+/* =========================================================
+   HOME HERO
+   ========================================================= */
+
+.hero {
+  padding:
+    1.5rem 0 3.2rem;
+
+  max-width: 720px;
+}
+
+
+/* =========================================================
+   EYEBROW — GLASS PILL
+   ========================================================= */
+
+.hero-eyebrow {
+  display: inline-block;
+
+  color: #505860;
+
+  font-size: 0.85rem;
+
+  margin-bottom: 1rem;
+
+  padding:
+    0.45rem 0.85rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.60);
+
+  border:
+    1px solid rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 7px 18px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero h1 {
+  font-size: 3.15rem;
+
+  line-height: 1.08;
+
+  margin-bottom: 0.65em;
+
+  letter-spacing: -0.025em;
+
+  color: #050505;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero-lede {
+  color: #555e67;
+
+  font-size: 1.05rem;
+
+  max-width: 60ch;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.hero-actions {
+  display: flex;
+
+  gap: 0.75rem;
+
+  margin-top: 1.6rem;
+}
+
+
+/* =========================================================
+   HOME GRID — LARGE GLASS PANEL
+   ========================================================= */
+
+.home-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 0;
+
+  padding: 1.6rem 1.5rem;
+
+  margin-top: 0.5rem;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.75);
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.70),
+      rgba(255, 255, 255, 0.38)
+    );
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 20px 55px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   HOME GRID ITEMS
+   ========================================================= */
+
+.home-grid-item {
+  padding:
+    0 1.5rem;
+
+  position: relative;
+}
+
+.home-grid-item:first-child {
+  padding-left: 0;
+}
+
+.home-grid-item:last-child {
+  padding-right: 0;
+}
+
+
+/* Vertical separators */
+
+.home-grid-item:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  right: 0;
+
+  width: 1px;
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.14),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   GRID TITLES
+   ========================================================= */
+
+.home-grid-item h3 {
+  font-size: 1.05rem;
+
+  color: #050505;
+}
+
+.home-grid-item p {
+  color: #60676e;
+
+  font-size: 0.95rem;
+
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1.1rem;
+
+  max-width: 480px;
+}
+
+
+/* =========================================================
+   FORM GLASS PANEL
+   ========================================================= */
+
+.form-panel {
+  max-width: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0.42)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.8);
+
+  border-left:
+    3px solid #000000;
+
+  border-radius: 20px;
+
+  padding: 1.5rem;
+
+  margin-bottom: 2rem;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   FIELDS
+   ========================================================= */
+
+.field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.35rem;
+}
+
+.field span:first-child {
+  font-size: 0.85rem;
+
+  font-weight: 500;
+
+  color: #080808;
+}
+
+.field input,
+.field textarea {
+  padding:
+    0.65rem 0.75rem;
+
+  border:
+    1px solid rgba(0, 0, 0, 0.14);
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.60);
+
+  color: #111111;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  transition:
+    background 0.2s ease,
+    border 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color:
+    rgba(0, 0, 0, 0.40);
+
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  outline: none;
+}
+
+.field-hint {
+  font-size: 0.8rem;
+
+  color: #666d74;
+}
+
+
+/* =========================================================
+   FIELD ROW
+   ========================================================= */
+
+.field-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 1rem;
+}
+
+.field-group {
+  border: none;
+
+  padding: 0;
+
+  margin: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.field-group legend {
+  font-size: 0.85rem;
+
+  font-weight: 500;
+
+  color: #080808;
+
+  padding: 0;
+
+  margin-bottom: 0.25rem;
+}
+
+.radio {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  font-size: 0.95rem;
+}
+
+.form-actions {
+  display: flex;
+
+  gap: 0.75rem;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.form-error {
+  background:
+    rgba(0, 0, 0, 0.055);
+
+  color: #222222;
+
+  border-left:
+    3px solid #000000;
+
+  border-radius: 8px;
+
+  padding:
+    0.7rem 0.9rem;
+
+  font-size: 0.92rem;
+}
+
+.form-footnote {
+  font-size: 0.92rem;
+
+  color: #646b72;
+
+  margin-top: 1.25rem;
+}
+
+
+/* =========================================================
+   RECORD LIST
+   ========================================================= */
+
+.record-list {
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.record-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  padding: 1.3rem 0;
+
+  border-bottom:
+    1px solid rgba(0, 0, 0, 0.12);
+}
+
+.record-row:first-child {
+  border-top:
+    1px solid rgba(0, 0, 0, 0.12);
+}
+
+.record-main {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.record-tag {
+  display: inline-block;
+
+  font-size: 0.75rem;
+
+  color: #111111;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  border:
+    1px solid rgba(0, 0, 0, 0.22);
+
+  padding:
+    0.15rem 0.5rem;
+
+  border-radius: 999px;
+
+  margin-bottom: 0.5rem;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.record-meta {
+  display: flex;
+
+  gap: 2rem;
+
+  margin:
+    0.5rem 0 0.7rem;
+}
+
+.record-meta dt {
+  font-size: 0.75rem;
+
+  color: #6a7076;
+
+  margin-bottom: 0.15rem;
+}
+
+.record-meta dd {
+  margin: 0;
+
+  font-weight: 500;
+}
+
+.record-detail {
+  color: #626970;
+
+  margin-bottom: 0;
+}
+
+.record-timestamp {
+  display: block;
+
+  font-size: 0.78rem;
+
+  color: #6a7076;
+
+  margin-bottom: 0.3rem;
+}
+
+.record-actions {
+  display: flex;
+
+  gap: 0.5rem;
+
+  align-items: flex-start;
+
+  flex-shrink: 0;
+}
+
+.empty-state {
+  color: #646b72;
+
+  padding: 2rem 0;
+
+  border-top:
+    1px solid rgba(0, 0, 0, 0.12);
+
+  border-bottom:
+    1px solid rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+.page-chat {
+  display: flex;
+
+  flex-direction: column;
+
+  min-height:
+    calc(100vh - 80px);
+}
+
+.chat-thread {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1.75rem;
+
+  padding:
+    1rem 0 2rem;
+}
+
+.chat-exchange {
+  max-width: 640px;
+}
+
+.chat-question {
+  font-weight: 600;
+
+  color: #050505;
+
+  margin-bottom: 0.6rem;
+}
+
+.chat-answer {
+  border-left:
+    3px solid #000000;
+
+  padding:
+    0.2rem 0 0.2rem 1rem;
+
+  color: #202020;
+
+  white-space: pre-wrap;
+}
+
+.chat-answer-loading {
+  color: #656b72;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   CHAT INPUT — FROSTED GLASS
+   ========================================================= */
+
+.chat-input-bar {
+  display: flex;
+
+  gap: 0.75rem;
+
+  position: sticky;
+
+  bottom: 0;
+
+  background:
+    rgba(235, 237, 239, 0.72);
+
+  padding:
+    1rem 0;
+
+  border-top:
+    1px solid rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.chat-input-bar input {
+  flex: 1;
+
+  padding:
+    0.7rem 0.9rem;
+
+  border:
+    1px solid rgba(0, 0, 0, 0.15);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.68);
+
+  color: #111111;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.chat-input-bar input:focus {
+  border-color:
+    rgba(0, 0, 0, 0.4);
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.84);
+}
+
+
+/* =========================================================
+   DANGER
+   ========================================================= */
+
+.btn-danger {
+  background:
+    rgba(255, 255, 255, 0.5);
+
+  color: #111111;
+
+  border:
+    1px solid rgba(0, 0, 0, 0.28);
+
+  border-radius: 10px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.btn-danger:hover {
+  background:
+    rgba(0, 0, 0, 0.07);
+
+  color: #000000;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .nav {
+    width: calc(100% - 24px);
+  }
+
+  .nav-inner {
+    flex-wrap: wrap;
+
+    gap: 0.75rem;
+  }
+
+  .nav-links {
+    order: 3;
+
+    width: 100%;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+  }
+
+  .home-grid-item {
+    padding:
+      1rem 0;
+  }
+
+  .home-grid-item:first-child {
+    padding-top: 0;
+  }
+
+  .home-grid-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .home-grid-item:not(:last-child)::after {
+    top: auto;
+
+    bottom: 0;
+
+    right: 0;
+
+    width: 100%;
+
+    height: 1px;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.14),
+        transparent
+      );
+  }
+}
+
+
+@media (max-width: 720px) {
+
+  .page {
+    padding:
+      2.5rem 1rem 4rem;
+  }
+
+  .hero {
+    padding-top: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.15rem;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .record-row {
+    flex-direction: column;
+  }
+
+  .record-meta {
+    flex-wrap: wrap;
+
+    gap: 1rem;
+  }
+}
